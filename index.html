@@ -1,181 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Random Roulette</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #000;
-        color: #FFFFFF; /* Dark grey text color */
-        margin: 0;
-        padding: 0;
-    }
-    #roulette-container {
-        text-align: center;
-        margin-top: 20vh;
-    }
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007bff;
-        color: #FFFFFF;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-bottom: 10px;
-    }
-    #result {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    #ip-address {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Roulette</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .slot-label {
+            font-size: 20px;
+            width: 400px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #333;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        .spin-button {
+            font-size: 14px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .spin-button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
 
-<div id="roulette-container">
-    <h1>Random Roulette</h1>
-    <p>Click the button below to spin the roulette!</p>
-    <button onclick="spinRoulette()">Spin</button>
-    <p id="result"></p>
-</div>
+    <div class="slot-label" id="slotLabel">Spin Me!</div>
+    <button class="spin-button" onclick="spin()">Spin</button>
 
-<div id="ip-address"></div>
+    <script>
+        // Custom text list for the slot machine
+        const TEXT_LIST = [
+            "Try on 5 pairs of clothing at a clothing store without going to changing room", 
+            "Only skirts no panties for 1 week", 
+            "Spend 12 hours in public with 30% or less of your body covered in clothing and go about your normal day", 
+            "Go to the gym in the shortest skirt possible and do leg and cardio workout", 
+            "Go to a sex store and take a photo of yourself flashing", 
+            "Edge for 12 hours without orgasm", 
+            "Do a bodywriting task given by the game master", 
+            "Write a 5,000 word Story of what your fantasy life of being a torture slave with no limits and post it and share the link on a forum", 
+            "Absolute Thrift: You no longer may anything new only used or from a thrift store", 
+            "Go to a movie once the room goes dark strip fully nude and only redress once the credits begin", 
+            "Go to a hiking trail hike fully to the end before leaving all clothing there and returning fully nude down the trail", 
+            "Video of you flashing tits on an overpass", 
+            "No longer wear clothing at home regardless of what's happening getting dressed after you close the door"
+        ];
 
-<script>
-function spinRoulette() {
-    var options = [
-         "Skinny dip in a public place",
-"Share a full nude with face to a family member with caption of come and use me anytime",
-"Spend the rest of the 24 hours with both tits and pussy partially exposed",
-"Have sexual intercourse with someone in your life who holds power over you ex(Parent, teacher, manager)",
-"Trade sex for a normal transaction ex(rent, food, event)",
-"Spend the next 4 hours in a public male restroom as a urinal",
-"Find a group of three males and ask them to gang bang you till they are done with you",
-"Find a dog and give him a blow job wearing the cum on your face till the next roll",
-"Upload the next task in full to your social medias",
-"Have your clit and nipples pierced",
-"Hitch hike to the nearest town fucking anyone who picks you up",
-"Order food and tip with sex",
-"For the rest of the duration of the game the participant is to stop using or remove any birth control that they use",
-"Be a stranger no limit sex slave until the next roll",
-"All shirts must be visibly transparent for the rest of the duration of the game",
-"Have sex with a family member",
-"Put flyers all over the town with your name a full body nude",
-"Streak 5 miles through the most populated area of your city",
-"Do a 10 mile wilderness hike fully nude",
-"Lock all clothing and keys inside of car and call a locksmith barter for sex",
-"Workout fully nude in a public gym",
-"Have sex with a farm animal can not be a animal such as dog or cat",
-"Spend until the next roll fully nude outside",
-"Have 10 men cum on your face without cleaning it until next roll",
-"Masturbate without cumming for 5 hours",
-"Pour a bottle of super glue onto your hands and stick them to your tits covering your nipples. Find a stranger to help you remove them",
-"Donate all underwear and bra that the participant owns",
-"Be a piss toilet for 2 women",
-"Eat a females pussy and asshole until she tells you to stop",
-"Double duration left on game",
-"Give horses blow jobs until you can fill a gallon jug with horse cum",
-"Wear only body paint for an entire day outside",
-"Have someone remove both nipples and sew them closed",
-"Fit a inflatable ball into asshole and fully inflate it",
-"Fit a inflatable ball into Pussy and fully inflate it",
-"See how many golf balls will fit in both asshole and cunt at the same time then leave them in until next roll",
-"Put 12 eggs into your cunt and push them out without the use of hands while clucking like a chicken if any break inside you restart",
-"Pour 500ml of isopropyl alcohol onto your self then light it on fire",
-"Pour an entire Smirnoff bottle into your asshole and keep the liquid in for 1 hour",
-"Have sex with a homeless man",
-"Have a female friend control your life under direct supervision of game master",
-"Push a skewer into each tit every 60 mins until next roll",
-"Fill asshole with as much ice as you can fit",
-"Crawl into the toilet of a porta potty",
-"Have tits tied at the base until they are purple bulbs have until next roll",
-"Wear a shirt with tits cut out to the gym for a work out",
-"Go to the gym in the shortest tennis skirt possible and do 500 squats facing the room",
-"Go to a porn store and have someone take a photo of you nude with your face and post it to all social media's",
-"Send a long rape fantasy text along with a video of you masturbating to orgasm to everyone in phones contact book",
-"Spend 6 hours in a public park with rape me written on your face in sharpie. Anyone who wants can use you",
-"Have the inside of upper lip tattooed with the word cock whore",
-"Have the inside of bottom lip tattooed with sperm bank",
-"Have sex with a Father in the same house as their kids",
-"Well your car at a used car delarship and use all the money on paying people to fuck you in the most fucked up ways you can imagine",
-"Rest",
-"Become a lifelong slave of game master",
-"Advertise your looking for sex on a porn website and go to the first person to respond without telling anyone else where your going",
-"Find a smoker and ask them to use you as an ashtray using your mouth",
-"Push a hose into your ass and turn the water on once water can no longer be held plug your asshole and spend the rest of the duration full of water",
-"Put a plastic bag on your head and masturbate till blacking out",
-"Take a nude photo with as many strangers as possible until next roll",
-"Recruit 2 female strangers to join you for the game",
-"Fuck your urethra with the largest dildo you own",
-"Stretch your asshole till it doesn't close smaller than 1 inches in diameter",
-"Find 2 Homeless men and be a fuckslut for 2 rounds of sex for each",
-"Get fucked by an entire sports team",
-"Have a baseball bat shoved deep into both cunt and asshole",
-"Get a fast food restraunt to allow you in the back and use their frier to stick both tits in breaded till they look cooked",
-"Have a friend put you in a garbage bag and throw you in the dumpster. Have the garbage bag be full of disgusting stuff",
-"Clean a public restroom with the toothbrush you use tongue and tits to mop should end up cleaner than your home bathroom",
-"Sneak into School/work after dark and spend it fully nude until start of it",
-"All food until next roll must have a strangers cum on it and a bottle of a strangers piss to drink",
-"Be buried up to neck in mud",
-"Launch a bottle rocket fire work using asshole as the holder",
-"For the entire duration of the game only eat 1000 calories a day",
-"Get a hot brand of slut on right tit",
-"Get spanked 1000 times",
-"Write whore on your face in sharpie or lipstick and wear it until next roll going about day as normal reapply if smeared",
-"Test 5 outfits in a store without going into the changing room this is tops and bottoms",
-"For the rest of the duration of the game wear no pants that decend below the bottom of your ass",
-"For the rest of the duration of the game wear shirts that decend no lower than your nipples",
-"Have tits beaten until they are fully bruised not leaving any area of on beaten skin",
-"Wash 5 cars topless",
-"Have a female friend join you for the rest of your duration",
-"No longer allowed to orgasm until the entire duration of the roulette is over",
-"Get all of the words from this image tattooed onto your body https://motherless.com/G350A804/C64238A",
-"Spend 12 hours in public with 30% or less of your body covered in clothing and go about your normal day",
-"Smear tiger balm or icy hot on nipples on and in pussy every 30 mins until next roll",
-"Have a stranger fist both asshole and cunt",
-"You are to spend until the next roll hooking up with men that's age increases after every fuck",
-"You are to be on a leash and collar until the next roll as a pet to a friend",
-"You have until the next roll to make 500 dollars working as a street prostitute charging 20 for cunt 30 for anal and 5 for blow job",
-"Have anal intercourse with 5 people",
-"Have a stranger on the street shave your head completely",
-"Have 3 strangers piss on you dont wash yourself until next roll",
-"Edge for 12 hours without orgasm",
-"Convince your best male and female friend to have a threesome",
-"Go steal a massive dildo from a sex shop",
-"Send a video of you showing your ID saying all your social medias and personal info",
-"Do a bodywriting task given by the game master",
-"Flash 5 people in public",
-"Go to a mall and find someone to hookup with",
-"Go to a movie and strip fully nude in the backrow and masturbate and moan and scream at climax",
-"Piss in a cup and pour it over your head",
-"Piss in a water bottle and drink from it all day",
-"Get your hair fully bleached",
-"Become a consenting blackmail slave",
-"Donate all clothing and trade it for clothing that is all 1-2 size tow small	"	,
-"Beg for a stranger to fight you and beat you up till your covered in bruises and they stop	"	,
-"Get drunk and keep drinking till you black out"
-    ];
-    var randomIndex = Math.floor(Math.random() * options.length);
-    var result = options[randomIndex];
-    document.getElementById("result").textContent = "Task: " + result;
-}
+        function spin() {
+            // Randomly select a new text from the list
+            const randomIndex = Math.floor(Math.random() * TEXT_LIST.length);
+            const selectedText = TEXT_LIST[randomIndex];
 
-// Fetch and display IP address
-fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("ip-address").textContent = "Your IP Address: " + data.ip;
-    })
-    .catch(error => console.error('Error fetching IP address:', error));
-</script>
+            // Update the slot label with the new text
+            document.getElementById("slotLabel").innerText = selectedText;
+        }
+    </script>
 
 </body>
 </html>
